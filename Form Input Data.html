@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Form Input Beer Data</title>
+</head>
+<body>
+  <form id="beerForm">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name"><br>
+
+    <label for="tagline">Tagline:</label>
+    <input type="text" id="tagline" name="tagline"><br>
+
+    <label for="first_brewed">First Brewed:</label>
+    <input type="text" id="first_brewed" name="first_brewed"><br>
+
+    <label for="abv">ABV:</label>
+    <input type="text" id="abv" name="abv"><br>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('#beerForm').submit(function(event) {
+        event.preventDefault();
+
+        var name = $('#name').val();
+        var tagline = $('#tagline').val();
+        var firstBrewed = $('#first_brewed').val();
+        var abv = $('#abv').val();
+
+        // Kirim data ke API atau lakukan operasi lain sesuai kebutuhan
+        // Contoh: console.log(name, tagline, firstBrewed, abv);
+
+        // Reset form setelah pengiriman data
+        $('#beerForm')[0].reset();
+      });
+    });
+  </script>
+</body>
+</html>
