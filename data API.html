@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Data Beers</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+  <table id="beerTable">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Tagline</th>
+        <th>First Brewed</th>
+        <th>ABV</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $.ajax({
+        url: 'https://api.punkapi.com/v2/beers',
+        dataType: 'json',
+        success: function(response) {
+          var beerList = response;
+          var tableBody = $('#beerTable tbody');
+
+          $.each(beerList, function(index, beer) {
+            var row = $('<tr>');
+            row.append($('<td>').text(beer.name));
+            row.append($('<td>').text(beer.tagline));
+            row.append($('<td>').text(beer.first_brewed));
+            row.append($('<td>').text(beer.abv));
+            tableBody.append(row);
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
